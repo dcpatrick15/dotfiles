@@ -44,7 +44,7 @@ fi
 # ===============
 # Lazygit 
 # ===============
-alias lg="lazygit"
+alias lzg="lazygit"
 
 # ===============
 # Tmux
