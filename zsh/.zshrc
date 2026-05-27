@@ -89,3 +89,29 @@ if [[ "$(uname)" == "Linux" ]]; then
   }
   compdef _pcbu pcbu
 fi
+
+# ===============
+# K3/8s
+# ===============
+if command -v kubectl &>/dev/null; then
+  alias vpn-status="kubectl logs -n media -l app.kubernetes.io/name=qbittorrent -c gluetun | grep 'Public IP'"
+  alias k="kubectl"
+  export KUBECONFIG=~/.kube/config
+  source <(kubectl completion zsh)
+  complete -F __start_kubectl k
+fi
+
+# ===============
+# ArgoCD
+# ===============
+if command -v argocd &>/dev/null; then
+  export ARGOCD_SERVER=argocd.home
+  export ARGOCD_OPTS="--grpc-web --plaintext"
+fi
+
+# ===============
+# lsd
+# ===============
+if command -v lsd &>/dev/null; then
+  alias ls="lsd --header"
+fi
